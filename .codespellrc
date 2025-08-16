@@ -1,0 +1,10 @@
+[codespell]
+check-filenames =
+check-hidden =
+count =
+
+# Disable warnings about binary files
+quiet-level = 3
+builtin = clear,rare,en-GB_to_en-US
+skip = *.y[a]ml,*.ipynb,*/.git,*/.*,*.c,site,cov.xml,.git,.*_cache,.nox,.venv,build,htmlcov,*.egg-info,test_data,*.txt,_typos.toml,.ipynb_checkpoints,project-words.txt
+ignore-words-list = ews

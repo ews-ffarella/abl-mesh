@@ -1,0 +1,211 @@
+{
+    "[json][jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features",
+        "editor.formatOnSave": true,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": false
+    },
+    "[markdown]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll.markdownlint": "explicit"
+        },
+        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+        "editor.formatOnPaste": true,
+        "editor.formatOnSave": true,
+        "editor.tabSize": 2
+    },
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+        },
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true
+    },
+    "[toml]": {
+        "editor.defaultFormatter": "tamasfe.even-better-toml",
+        "editor.formatOnSave": true,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    "[yaml]": {
+        "editor.autoIndent": "advanced",
+        "editor.defaultFormatter": "redhat.vscode-yaml",
+        "editor.formatOnSave": false,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+    },
+    "autoDocstring.docstringFormat": "google-notypes",
+    "breadcrumbs.enabled": true,
+    "cSpell.caseSensitive": false,
+    "cSpell.customDictionaries": {
+        "custom": true, // Enable the `custom` dictionary
+        "internal-terms": false, // Disable the `internal-terms` dictionary
+        "project-words": {
+            "addWords": true,
+            "description": "Words used in this project",
+            "name": "project-words",
+            "path": "${workspaceRoot}/project-words.txt"
+        }
+    },
+    "cSpell.diagnosticLevel": "Hint",
+    "cSpell.enabled": true,
+    "cSpell.ignorePaths": [
+        "package-lock.json",
+        "node_modules",
+        "vscode-extension",
+        ".git/{info,lfs,logs,refs,objects}/**",
+        ".git/{index,*refs,*HEAD}",
+        ".vscode",
+        ".vscode-insiders",
+        ".codespellrc",
+        "_typos.toml",
+        "pyproject.toml",
+        "ruff.toml"
+    ],
+    "cSpell.ignoreRegExpList": [
+        "plt.*",
+        "mpl.*",
+        "np.*",
+        "numpy.*",
+        "gpd.*",
+        "pd.*",
+        "sns.*",
+        "scipy.*"
+    ],
+    "cSpell.language": "en",
+    "cSpell.languageSettings": [
+        {
+            "ignoreRegExpList": [
+                "string_raw",
+                "string_binary",
+                "ignore_string_literal_prefix",
+                "string-multi-line",
+                "strings"
+                // "comment-single-line",
+                // "comment-multi-line",
+                // "comments"
+            ],
+            "languageId": "python"
+        }
+    ],
+    "cSpell.spellCheckOnlyWorkspaceFiles": true,
+    "cSpell.suggestionMenuType": "quickPick",
+    "editor.fontLigatures": true,
+    "editor.formatOnSave": true,
+    "editor.glyphMargin": true,
+    "editor.indentSize": "tabSize",
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "none",
+    "editor.tabSize": 4,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.decorations.badges": false,
+    "explorer.decorations.colors": false,
+    "explorer.excludeGitIgnore": false,
+    "files.exclude": {
+        ".coverage*": true,
+        ".pytest_cache": true,
+        ".ruff_cache": true,
+        ".venv": true,
+        "**/__pycache__": true,
+        "**/.DS_Store": true,
+        "**/.git": true,
+        "**/.hg": true,
+        "**/.ipynb_checkpoints": true,
+        "**/.nox/*/.gitignore": true,
+        "**/.nox/*/bin": true,
+        "**/.nox/*/lib": true,
+        "**/.nox/*/pyvenv.cfg": true,
+        "**/.svn": true,
+        "**/.virtual_documents": true,
+        "**/*:Zone.Identifier": true,
+        "**/*.egg-info": true,
+        "**/*/~$*": true,
+        "**/Thumbs.db": true,
+        "htmlcov/*[^index.html]*": true,
+        "notebooks/*.ipynb": false,
+        "notebooks/staging/*[^.ipynb]": true,
+        "src/**/*.c": true
+    },
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "git.autofetch": true,
+    "git.enabled": true,
+    "git.enableSmartCommit": true,
+    "jupyter.askForKernelRestart": false,
+    "jupyter.notebookFileRoot": "${fileDirname}",
+    "notebook.codeActionsOnSave": {
+        "notebook.source.fixAll": "explicit",
+        "notebook.source.organizeImports": "explicit"
+    },
+    "notebook.consolidatedRunButton": true,
+    "notebook.diff.enablePreview": true,
+    "notebook.diff.ignoreMetadata": true,
+    "notebook.diff.ignoreOutputs": true,
+    "notebook.formatOnSave.enabled": true,
+    "notebook.lineNumbers": "on",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.ignore0": [
+        "*"
+    ],
+    "python.analysis.indexing": true,
+    "python.languageServer": "Pylance",
+    "ruff.enable": true,
+    "ruff.importStrategy": "useBundled",
+    "ruff.lint.preview": false,
+    "ruff.nativeServer": "auto",
+    "taskExplorer.enabledTasks": {
+        "ant": false,
+        "bash": false,
+        "composer": false,
+        "gradle": false,
+        "grunt": false,
+        "gulp": false,
+        "make": false,
+        "maven": false,
+        "npm": false,
+        "perl": false,
+        "pipenv": false,
+        "powershell": false,
+        "python": false,
+        "ruby": false,
+        "tsc": false
+    },
+    "taskExplorer.enableSideBar": true,
+    "taskExplorer.expanded": {
+        "favorites": false,
+        "userTasks": false
+    },
+    "taskExplorer.showLastTasks": false,
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "todo-tree.general.tags": [
+        "BUG",
+        "HACK",
+        "FIXME",
+        "TODO",
+        "TOEDIT"
+    ],
+    "todo-tree.highlights.customHighlight": {
+        "TOEDIT": {
+            "background": "#FF8C00",
+            "fontWeight": "bolder",
+            "foreground": "#FFFFFF",
+            "gutterIcon": true,
+            "icon": "$(edit)",
+            "iconColour": "#FF8C00"
+        }
+    },
+    "workbench.colorCustomizations": {
+        "notebook.outputContainerBackgroundColor": "#ffffff"
+    },
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "markdown": true,
+        "scminput": true
+    }
+}

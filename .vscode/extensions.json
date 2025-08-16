@@ -1,0 +1,25 @@
+{
+    "recommendations": [
+        "charliermarsh.ruff",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "spmeesseman.vscode-taskexplorer",
+        "tamasfe.even-better-toml",
+        "github.vscode-pull-request-github",
+        "oderwat.indent-rainbow",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.vscode-jupyter-cell-tags",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.jupyter-renderers",
+        "richie5um2.vscode-sort-json",
+        "tomoki1207.pdf",
+        "redhat.vscode-xml",
+        "redhat.vscode-yaml",
+        "gruntfuggly.todo-tree",
+        "davidanson.vscode-markdownlint",
+        "yzhang.markdown-all-in-one",
+        "esbenp.prettier-vscode",
+        "njpwerner.autodocstring",
+        "streetsidesoftware.code-spell-checker"
+    ]
+}

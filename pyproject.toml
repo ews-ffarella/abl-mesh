@@ -1,0 +1,126 @@
+[project]
+name = "abl-mesh"
+version = "0.1.0"
+description = "Topography-aware meshing pipeline for ABL simulations (HO approximant, metric-driven adaptation, hybrid prism/tet mesher, precompute & IO)."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Fabien Farella", email = "f.farella@ews-consulting.com" }]
+keywords = [
+    "mesh",
+    "topography",
+    "abl",
+    "gmsh",
+    "raster",
+    "precompute",
+    "pyvista",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering",
+]
+requires-python = ">=3.12"
+
+dependencies = [
+    "joblib>=1.5.1",
+    "meshio>=5.3.5",
+    "numpy>=2,<3",
+    "pandas[performance]>=2,<3",
+    "rasterio>=1.4.3",
+    "scipy>=1.16.1",
+    "shapely>=2.1.1",
+    "tqdm>=4.67.1",
+    "xdem>=0.1.6",
+    "fiona[all]>=1.10.1",
+    "geopandas[all]>=1.0.1",
+    "tetgen>=0.6.7",
+]
+
+[project.optional-dependencies]
+viz = ["matplotlib>=3.10.5", "pyvista[all]>=0.46.1"]
+gmsh = ["gmsh>=4.14"]
+accel = ["cython>=3.1.3", "numba>=0.61.2"]
+tri = [
+    "meshpy>=2025.1.1",
+    "startinpy>=0.12.2",
+    "triangle>=20250106",
+]
+full = [
+    "abl-mesh[viz,gmsh,accel,tri]"
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.30.1",
+]
+
+
+# --------------------------
+# Entry points (console scripts)
+# --------------------------
+# Provides convenient CLI entrypoints for the pipeline and precompute helper.
+# Adjust module paths if your package layout differs.
+[project.scripts]
+# xwindmesh = "examples.run_pipeline_raster:main"
+# precompute-coeffs = "scripts.precompute_coeffs:main"
+
+# --------------------------
+# Build system
+# --------------------------
+[build-system]
+requires = ["setuptools>=61.0", "wheel", "setuptools_scm>=6.0"]
+build-backend = "setuptools.build_meta"
+
+
+# [tool.setuptools]
+# packages = { find = { where = [
+#     ".",
+# ], include = [
+#     "abl_mesh*",
+#     "examples*",
+#     "scripts*",
+# ] } }
+
+# # Include non-code data files (docs, examples, small test data). Adjust globs to suit actual repo.
+# [tool.setuptools.package-data]
+# "abl_mesh" = [
+#     "py.typed",
+#     "data/*.tif",
+#     "data/*.geojson",
+#     "templates/*.geojson",
+#     "templates/*.msh",
+# ]
+# "" = ["PROJECT_OVERVIEW.md", "README.md", "CHANGELOG.md"]
+
+# # --------------------------
+[tool.setuptools.dynamic]
+version = { attr = "abl_mesh.__version__" }
+
+# [tool.setuptools.manifest.in]
+# include = ["PROJECT_OVERVIEW.md", "examples/*.py", "scripts/*.py", "tests/*.py"]
+
+[tool.uv]
+concurrent-builds = 1
+concurrent-installs = 1
+
+[tool.uv.sources]
+vtk = { index = "vtk" }
+abl-mesh = { workspace = true }
+#xdem = { git = "https://github.com/GlacioHack/xdem.git" }
+#geoutils = { git = "https://github.com/GlacioHack/geoutils.git" }
+
+[[tool.uv.index]]
+name = "vtk"
+url = "https://wheels.vtk.org/"
+
+[[tool.uv.index]]
+name = "ews"
+url = "http://devpi.ews.tools/root/private/"
+default = false
+
+
+

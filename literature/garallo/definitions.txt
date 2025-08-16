@@ -1,0 +1,382 @@
+% DEFINICIONS MATIAS
+
+\def\eps{\varepsilon}
+\def\bu{\mathbf u}
+\def\ustar{u_\ast}
+\renewcommand{\mathbf}[1]{\mbox{\boldmath{$#1$}}}
+
+
+% definicions noves
+\newcommand{\xComplexity}{\mathcal{C}}
+
+%DEFINICIONS DE FORMAT DE TEXT
+\newcommand{\xMat}[1]{\mathbf{#1}}  
+\newcommand{\vect}[1]{\mathbf{#1}}                                    % vectors
+\newcommand{\boxcomment}[1]{\noindent\fbox{\parbox{\textwidth}{#1}}\medskip\\}
+\newcommand{\xAbs}[1]{| #1 |}
+\newcommand{\mbf}{\mathbf}
+
+\newcommand{\parcial}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand{\secparcial}[3]{\frac{\partial^2#1}{\partial#2\partial#3}}
+\newcommand{\secparcialab}[1]{\secparcial{#1}{\alpha}{\beta}}
+\newcommand{\derivada}[2]{\frac{\text{d}#1}{\text{d}#2}}
+\newcommand{\eval}[2]{|^{#1}_{#2}}
+%
+% comanda eloi ALGORITMES
+%\renewcommand{\algorithmicensure}{\textbf{Return :}}
+%
+% COMANDES TEORIA NOVA (REFERENCIANT A NOMS DE COSES):
+% objective function
+\newcommand{\xeta}[1]{{\eta_{#1}}}
+\newcommand{\xetaParam}[1]{{\tilde{\eta}_{#1}}}
+\newcommand{\xetaParamBis}[2]{{\tilde{\eta}_{#1}^{#2}}}
+\newcommand{\xetaRestr}[1]{{\hat{\eta}_{#1}}}
+\newcommand{\xdeviationLinear}{\xdistortionLinear}
+\newcommand{\xdistortionLinear}{\eta}
+\newcommand{\xdistortionLinearMod}{\xdistortionLinear_*}
+\newcommand{\xDistortionLinear}{\xdistortionLinear}
+\newcommand{\xDistortionDelta}{\xDistortionLinear_\delta}
+\newcommand{\xDev}[1]{{\eta_{#1}}}
+\newcommand{\xDevPlane}{\xDev{}}
+\newcommand{\xDevPlaneRestr}{\hat{\xDev{}}}
+\newcommand{\xDevSrf}{\xDev{\null_\xSurface}}
+\newcommand{\xDevParam}{\xDev{\null_\xParamPlane}}
+\newcommand{\xDevParamBis}[1]{\xDev{\null_{\xParamPlane_{#1}}}}
+\newcommand{\xDevParamRestr}{\hat{\xDev{}}_{\null_\xParamPlane}}
+\newcommand{\xDevParamRestrBis}[1]{\hat{\xDev{}}_{\null_{\xParamPlane_{#1}}}}
+\newcommand{\xQuality}[1]{q_{#1}}
+\newcommand{\xQualityPlane}{q}
+\newcommand{\xQualitySrf}{\xQuality{\null_\xSurface}}
+\newcommand{\xQualityParam}{\xQuality{\null_\xParamPlane}}%[1]{\tilde{\xQuality{}}_{#1}}
+\newcommand{\xQualityRestr}{{\hat{\xQuality{}}_{\null_\xParamPlane}}}
+\newcommand{\xedge}[1]{\vect{e}_{#1}}
+\newcommand{\xedgeN}[1]{\tilde{\xedge{}}_{#1}}
+\newcommand{\eprev}{\xedge{2}^{\text{prev}}}
+% nodes of a triangle 
+\newcommand{\xPointSrf}[1]{\vect{z}_{#1}}
+\newcommand{\xPointAuxPlane}[1]{\vect{y}_{#1}}
+% \newcommand{\xnodeCoord}[1]{x_{#1}}
+% \newcommand{\xnodeBasic}{\vect{x}}
+% \newcommand{\xnode}[1]{\xnodeBasic_{#1}}
+% \newcommand{\xCoordx}[1]{(x_{#1},y_{#1})}
+% % \newcommand{\ynode}[1]{\vect{y}_{#1}}
+% \newcommand{\xCoordy}[1]{(x_{#1},y_{#1},z_{#1})}
+\newcommand{\xnodeCoord}[1]{x^{#1}}
+\newcommand{\xnodeBasic}{\vect{z}}
+\newcommand{\xnode}[1]{\xnodeBasic_{#1}}
+\newcommand{\xCoordx}[1]{(x_{#1},y_{#1})}
+\newcommand{\ynode}[1]{\vect{y}_{#1}}
+\newcommand{\xCoordy}[1]{(x_{#1},y_{#1},z_{#1})}
+% nodes of a triangle tilde
+\newcommand{\xnodeTilde}[1]{\tilde{\vect{x}}_{#1}}
+% nodes of a triangle hat
+\newcommand{\xnodeHat}[1]{\vect{x}_{#1}}
+% triangle space (3 coord, 2 coord)
+\newcommand{\xTriangleSpace}[1]{\mathcal{T}_{#1}}
+\newcommand{\xTriangleSpaceSrf}{\mathcal{T}_{\xSurface}}
+\newcommand{\xTriangleSpacePlane}{\mathcal{T}}
+\newcommand{\xTriangleSpaceParam}{\mathcal{T}_{\xParamPlane}}
+% 3D triangle
+\newcommand{\xTriangleIIID}{\xTriangle_{\null_{\xSurface}}}
+\newcommand{\xTriangleSrf}{\xTriangle_{\null_{\xSurface}}}
+% 3D triangle with z=0
+\newcommand{\xTriangleIID}{\xTriangle}
+\newcommand{\xTrianglePlane}{\xTriangle}
+% 2D triangle
+\newcommand{\xTriangle}{E}
+\newcommand{\xElement}{E}
+\newcommand{\xElementInd}[1]{E_{#1}}
+\newcommand{\xTriangleParamPlane}{\xTriangle_{\null_{\xParamPlane}}}
+% function from TriangleSpace3 to TriangleSpace3'
+\newcommand{\xT}{\vect{T}}
+\newcommand{\xText}{\tilde{\xT}}
+% parametrization of the surface
+\newcommand{\xparametrization}{\boldsymbol{\varphi}}
+\newcommand{\xparametrizationDiscrete}{\xparametrization_h}
+\newcommand{\xparametrizationP}{\xparametrization_{\xOrderHO}}
+\newcommand{\xcurve}{\boldsymbol{\gamma}}
+\newcommand{\xparametrizationTri}{\tilde{\xparametrization}}
+\newcommand{\xParamPlane}{\Pi_{\xSurface}}
+\newcommand{\xSurface}{\Sigma}
+\newcommand{\xCurveGeometry}{\Gamma}
+% projection 3 coord to 2 coord
+\newcommand{\xprojection}{\vect{\pi}}
+% jacobian matrices
+\newcommand{\xJacobianRP}{\mat{A}} %jacobian matrix ReferenceTri to PhysicalTri
+\newcommand{\xJacobianRI}{\mat{W}} %jacobian matrix ReferenceTri to IdealTri
+\newcommand{\xJacobianIP}{\mat{S}} %jacobian matrix IdealTri to PhysicalTri
+% R de real
+\newcommand{\xreal}[1]{\mathbb{R}^{#1}}
+% funció continua
+\newcommand{\xcont}[1]{\mathcal{C}^{#1}}
+%punts a l'espai paramètric
+\newcommand{\xTransposed}{^t}
+\newcommand{\xParamPoint}[1]{\vect{x}_{#1}}
+\newcommand{\xParamCoordFirst}[1]{x_{#1}}
+\newcommand{\xParamCoordSecond}[1]{y_{#1}}
+\newcommand{\xParamCoord}[1]{(\xParamCoordFirst{#1},\xParamCoordSecond{#1})\xTransposed}
+
+\newcommand{\xscaleFun}{\tilde{\mathbf{\lambda}}}
+\newcommand{\xscaleFunRestr}{\mathbf{\lambda}}
+\newcommand{\xscaleParam}{\Lambda}
+
+\newcommand{\mesh}{\mathrm{M}}
+\newcommand{\xMesh}{\mathrm{M}}
+\newcommand{\xMeshIdeal}{\xMesh_I}
+\newcommand{\xMeshPhysical}{\xMesh_P}
+\newcommand{\xMeshRef}{\xMesh_M}
+\newcommand{\submesh}[1]{\xMesh_{#1}}
+
+% HIGH ORDER ELEMENTS
+\newcommand{\physTri}[1]{\xTriangle_{#1}}
+\newcommand{\xphysTri}[1]{\xTriangle_{#1}}
+\newcommand{\xrefTri}[1]{\xTriangle_{R_{#1}}}
+\newcommand{\xidealTri}[1]{\xTriangle_{I_{#1}}}
+\newcommand{\physElem}[1]{\xElement_{#1}^P}
+\newcommand{\xphysElem}[1]{\physElem{#1}}
+\newcommand{\xPhysElem}[1]{\physElem{#1}}
+\newcommand{\xElementPhys}[1]{\physElem{#1}}
+\newcommand{\xrefElem}[1]{\xElement^{M}_{#1}}
+\newcommand{\xRefElem}[1]{\xrefElem{#1}}
+\newcommand{\xidealElem}[1]{\xElement^{I}_{#1}}
+\newcommand{\xIdealElem}[1]{\xidealElem{#1}}
+\newcommand{\xElementRef}[1]{\xRefElem{#1}}
+\newcommand{\xElementIdeal}[1]{\xIdealElem{#1}}
+\newcommand{\xIdealCoord}[1]{\mathbf{y}_{#1}}
+\newcommand{\xReferenceCoord}[1]{\xNodeRef{#1}}
+\newcommand{\xPhysicalCoord}[1]{\xnode{#1}}
+\newcommand{\xPhysicalCoordFirst}[1]{x_{#1}}
+\newcommand{\xPhysicalCoordSecond}[1]{y_{#1}}
+\newcommand{\xPhysicalCoordThird}[1]{z_{#1}}
+
+\newcommand{\xNodeRef}[1]{\boldsymbol{\xi}_{#1}}
+\newcommand{\xNodeRefCoord}[1]{\xi^{#1}}
+\newcommand{\xrepresentationHO}{\boldsymbol{\phi}}
+\newcommand{\xrepresentationRP}{\xrepresentationHO_P}
+\newcommand{\xrepresentationRI}{\boldsymbol{\phi}_I}
+%\newcommand{\xrepresentationIP}{\boldsymbol{\phi}_{\xElement{}}}
+\newcommand{\xrepresentationIP}{\boldsymbol{\phi}}
+\newcommand{\xrepresentationIPind}[1]{\boldsymbol{\phi}_{\xElementInd{#1}}}
+\newcommand{\xDomMaphE}{\boldsymbol{\phi}_{h_{|_\xElement}}}
+\newcommand{\xDomMaphEInd}[1]{\boldsymbol{\phi}_{h_{|_{\xPhysElem{#1}}}}}
+%\newcommand{\HOind}[1]{\boldsymbol{\phi}_{#1}}
+%\newcommand{\xmapRPind}[1]{\xrepresentationHO_{P_#1}}
+%\newcommand{\xmapRIind}[1]{\xrepresentationHO_{I_#1}}
+%\newcommand{\xmapIPind}[1]{\xrepresentationIPind{#1}}
+\newcommand{\xrepresentationIPelem}{\boldsymbol{\phi}_{h_{NO}}}
+\newcommand{\expDeviation}{{2}}
+\newcommand{\expNormQual}{{2}}
+%\newcommand{\xdeviationHO}{\hat{\eta}_{\expDeviation}}
+%\newcommand{\deviationHO}{\xdeviationHO}
+%\newcommand{\xdeviationHOexp}[1]{\hat{\eta}_{#1}}
+%\newcommand{\deviationHOexp}[1]{\xdeviationHOexp{#1}}
+\newcommand{\xdeviationHO}{\eta_{{}}}%\hat{\eta}_{\expDeviation}}
+\newcommand{\xDistortionHO}{\xdeviationHO}
+\newcommand{\xDistortionHOind}[1]{\eta_{{#1}}}
+
+\newcommand{\xDistortionHOReg}{\xDistortionLinear_{\delta,\xElement{}}}
+\newcommand{\xDistOperator}[1]{\mathrm{M}#1}
+\newcommand{\xDistOperatorRegularized}[1]{\mathrm{M}_{\delta}#1}
+\newcommand{\xDistortionHOPunctMesh}{\xDistOperator{\xDomMaph}}
+\newcommand{\xDistortionHOPunctElem}{\xDistOperator{\xrepresentationIP}}
+\newcommand{\xDistortionHOPunctElemInd}[1]{\xDistOperator{\xrepresentationIPind{#1}}}
+\newcommand{\xDistortionHOPunctMeshReg}{\xDistOperatorRegularized{\xDomMaph}}
+\newcommand{\xDistortionHOPunctElemReg}{\xDistOperatorRegularized{\xrepresentationIP}}
+\newcommand{\xDistortionHOPunctElemIndReg}[1]{\xDistOperatorRegularized{\xrepresentationIPind{#1}}}
+\newcommand{\xDistortionHOMesh}{\xDistortionLinear_{{\xMesh{}}}}
+\newcommand{\xDistortionHOMeshReg}{\xDistortionLinear_{\delta,{\xMesh{}}}}
+
+%\newcommand{\xDistortionHOind}[1]{\eta_{\xElementInd{#1}}}
+%\newcommand{\xDistOperator}[1]{\mathrm{M}#1}
+\newcommand{\xDistortionHOPunct}{\xDistOperator{\xrepresentationIP}}
+\newcommand{\xDistortionHOPunctInd}[1]{\xDistOperator{\xrepresentationIPind{#1}}}
+\newcommand{\xDistortionHOPunctSurf}[1]{\mathrm{M}^{#1}{\xrepresentationIP}}
+\newcommand{\xDistortionHOPunctSurfElem}[2]{\mathrm{M}^{#1}{\xrepresentationIPind{#2}}}
+\newcommand{\xDistortionHOsurf}{\eta^{\xparametrization}_{{}}}%\hat{\eta}_{\expDeviation}}
+\newcommand{\xDistortionHOsurfInd}[1]{\eta^{\xparametrization}_{{#1}}}%\hat{\eta}_{\expDeviation}}
+% \newcommand{\xdeviationHOexp}[1]{\hat{\eta}_{#1}}
+% \newcommand{\deviationHOexp}[1]{\xdeviationHOexp{#1}}
+\newcommand{\xqualityHO}{q_{\xElement{}}}
+\newcommand{\qualityHO}{\xqualityHO}
+\newcommand{\setOfHOnodes}[2]{{#1}_{1},\ldots,{#1}_{\numberNodesHO{#2}}}
+\newcommand{\setOfHOnodesComplete}[1]{{#1}_1,\ldots,{#1}_{\numberNodesHO{\xOrderHO}}}
+\newcommand{\completeRepresentationHO}[3]{\xrepresentationHO(#1;\setOfHOnodes{#2}{#3})}
+\newcommand{\completeRepresentationRP}[3]{\xrepresentationRP(#1;\setOfHOnodes{#2}{#3})}
+\newcommand{\xOrderHO}{p}
+% \newcommand{\completeRepresentationHO}[#2]{\representationHO(#1,#2)}%;\xnode{1},\ldots,\xnode{\numberNodesHO{#2}})}
+\newcommand{\numberNodesHO}[1]{{{n}_{#1}}}
+\newcommand{\shapeFunction}[1]{N_{#1}}
+\newcommand{\xetaScaled}[1]{{\overline{\eta}_{#1}}}
+
+\newcommand{\xDifferential}[1]{\xMat{D}#1}
+
+\newcommand{\xObjFun}[1]{f_{#1}}
+
+\newcommand{\xArea}[1]{|#1|}
+\newcommand{\xDet}{\text{det }}
+
+% % % % 
+\newcommand{\xIdealManifold}{\mathcal{M}}
+\newcommand{\xPhysicalManifold}{\mathcal{N}}
+\newcommand{\xTangent}[2]{T_{#1}#2}
+\newcommand{\xetaDiff}[1]{\mu_{#1}}
+\newcommand{\xdeviationHODiff}{\hat{\mu}_{\expDeviation}}
+
+
+
+\newcommand{\xAffine}{\mathbf{\psi}}
+\newcommand{\xA}{\mathbf{A}}
+\newcommand{\xb}{\mathbf{b}}
+
+
+\newcommand{\xSign}{\gamma}
+
+
+%%%%%%%%%%%%%%%% NEW HO SURFACE SMOOTHING
+\newcommand{\numberNodesHOComplete}{\numberNodesHO{\xOrderHO}}
+\newcommand{\xProductSpace}[2]{{#1}^{\times#2}}
+\newcommand{\xProductSpaceBracket}[2]{\left(#1\right)^{\times#2}}
+
+\newcommand{\xDistortionHOSRF}{\xDistortionHOSRFpunct^\xElement{}}
+\newcommand{\xDistortionHOSRFpunct}{{\eta}_{\null_{\xParamPlane}}}
+% {{\eta}_{\xrepresentationIP_{\xparametrization}}}
+\newcommand{\xqualityHOSRF}{{q}_{\null_{\xParamPlane}}^\xElement{}}
+% {{q}_{\xrepresentationIP_{\xparametrization}}}
+\newcommand{\xDistortionHOSRFsrf}{\xDistortionHOSRFsrfPunct^\xElement{}}
+\newcommand{\xDistortionHOSRFsrfPunct}{{\eta}_{\null_{\xSurface}}}
+\newcommand{\xqualityHOSRFsrf}{{q}_{\null_{\xSurface}}^\xElement{}}
+\newcommand{\xDistortionHOSRFBis}[1]{{\eta}_{\null_{\xParamPlane_{#1}}}}
+
+
+\newcommand{\xTangentSpace}[2]{\text{T}_{#1}#2}
+\newcommand{\xTmatrix}{\mat{M}}
+
+\newcommand{\xNodeIdeal}[1]{\xIdealCoord{#1}}
+\newcommand{\xNodeIdealCoord}[2]{{y}^{#1}_{#2}}
+
+
+%\newcommand{\xModSigma}{\sigma_*}%varpi}
+\newcommand{\xModSigma}[1]{\sigma_{#1}}%varpi}
+\newcommand{\xModSigmaD}{\sigma_{\delta}}%varpi}
+\newcommand{\xParameterDet}{\varepsilon}
+\newcommand{\xTol}{\tau}
+\newcommand{\xDeteen}{\mathbb{D}}
+\newcommand{\xConstantTerm}{\kappa}
+
+\newcommand{\xNumElements}{N_{E}}
+\newcommand{\xNumNodes}{N}
+\newcommand{\xFreeNodes}{n_F}
+\newcommand{\xFreeIndices}{\mathcal{I}_F}
+\newcommand{\xNumNodesElement}{N_{N,e}} %{n_{N_e^k}}
+\newcommand{\xNumNodesLoop}{N_l}
+\newcommand{\xNumElementsNeigh}[1]{N_{E}^{#1}}
+\newcommand{\xNumElementsSurface}{N_{E_s}}
+\newcommand{\xNumNodesSurface}{N_{N_s}}
+
+\newcommand{\xGlobalObjFun}{f}
+\newcommand{\xElemObjFun}[1]{f_{#1}}
+\newcommand{\xDistSubMeshParam}{\hat{f}}%K_{\xParamPlane}}
+\newcommand{\xDistSubMeshSrf}{K_{\xSurface}}
+\newcommand{\xbnabla}{\mbf{\nabla}}
+\newcommand{\xHessian}{\xbnabla^2}
+\newcommand{\xStep}[2]{\alpha_{#1}^{#2}}
+\newcommand{\xDirection}[2]{\vect{p}_{#1}^{#2}}
+\newcommand{\xUpdatedVec}[2]{\vect{w}_{#1}^{#2}}
+
+
+\newcommand{\xgrad}{\xbnabla}
+\newcommand{\xgradxy}{{\xgrad}_{xy}}
+
+\newcommand{\xSizeField}{h}
+\newcommand{\xShapeMeasure}{\xdeviationLinear_{sh}}
+\newcommand{\xSizeMeasure}{\xdeviationLinear_{si}}
+\newcommand{\xSizeShapeMeasure}{\xdeviationLinear_{ss}}
+\newcommand{\xMin}{\mu}
+\newcommand{\xModmin}{\mu_*}
+
+
+
+\newcommand{\xScalarProduct}[3]{\langle{#1},{#2}\rangle_{#3}}
+\newcommand{\xNorm}[2]{\left|\left|{#1}\right|\right|_{#2}}
+\newcommand{\xScalarProductMesh}[2]{\langle{#1},{#2}\rangle_{\xMesh{}}}
+\newcommand{\xScalarProductMeshI}[2]{\langle{#1},{#2}\rangle_{\xMeshIdeal}}
+\newcommand{\xNormMesh}[1]{\|{#1}\|_{\xMesh{}}}
+\newcommand{\xNormMeshIdeal}[1]{\|{#1}\|_{\xMeshIdeal{}}}
+\newcommand{\xExtraConstant}{}%{\frac{1}{2}}
+
+
+
+\newcommand{\xElemNod}[1]{\hat{#1}}
+\newcommand{\xElemNodTotal}{\hat{n}_\xOrderHO}
+\newcommand{\numberNodesHOLocal}[1]{{\xElemNod{n}_{#1}}}
+
+\newcommand{\xFunctionSpace}{\mathcal{U}}
+\newcommand{\xFunctionSpaceVect}{\boldsymbol{\xFunctionSpace}}
+\newcommand{\xPolynomialSpace}{\mathcal{P}}
+
+\newcommand{\xDomain}[1]{\Omega_{#1}}
+\newcommand{\xDomainIdeal}{\xDomain{I}}
+\newcommand{\xDomainPhysical}{\xDomain{P}}
+
+\newcommand{\xDim}{d}
+
+\newcommand{\xelind}{e}
+\newcommand{\xnodind}{e}
+
+\newcommand{\xDomMap}{\phi}
+\newcommand{\xDomMaph}{\phi_{h}}
+\newcommand{\xDirichlet}{g}
+\newcommand{\xDirichleth}{\xDirichlet_{h}}
+
+
+\DeclareMathOperator*{\argmin}{argmin}
+
+\newcommand{\xFunction}{\phi}
+\newcommand{\xMappingLinearElements}{\xrepresentationIP}
+
+
+\newcommand{\aposteriori}{\textit{a posteriori }}
+\newcommand{\xScaledJacobian}{\mu}
+
+\newcommand{\xPseudoNormal}{\vect{n}_{\xnode{}}}
+\newcommand{\xDiamDisc}{D}
+\newcommand{\tetgen}{{TetGen}}
+\newcommand{\alya}{{Alya}}
+\newcommand{\alyaCode}{{the Alya solver}}
+
+
+\newcommand{\xMetric}{\mathcal{M}}
+\newcommand{\xMetricParam}[1]{\xMetric_{#1} }
+\newcommand{\xMetricFisrtFF}{\xMetricParam{1}}
+\newcommand{\xMetricTangent}{\xMetricParam{T}}
+\newcommand{\xMetricCurvature}{\xMetricParam{\xHessianNice}}
+\newcommand{\xMetricCurvatureComplexity}{\xMetricParam{C}}
+\newcommand{\xDistance}{d}
+\newcommand{\xHessianNice}{\mathcal{H}}
+
+
+\newcommand{\zh}{\mathrm{z}_h}
+\newcommand{\zp}{\mathrm{z}_{\xOrderHO}}
+
+
+\newcommand{\xlengthMT}{l_{\xMetricTangent}}
+\newcommand{\xlengthMC}{l_{\xMetricCurvatureComplexity}}
+\newcommand{\listElemsToRefine}{elemsToRefine}%{$\lbrace e\rbrace$} %{elemsToRefine}%{$\lbrace e\rbrace$} %
+
+
+%\DeclareSymbolFont{extrasymbols}{OMS}{cmsy}{m}{n}
+%\DeclareMathDelimiter{\lVert}
+%{\mathopen}{extrasymbols}{"6B}{largesymbols}{"0D}
+%\DeclareMathDelimiter{\rVert}
+%{\mathclose}{extrasymbols}{"6B}{largesymbols}{"0D}
+%\DeclarePairedDelimiter\xNewNorm{\lVert}{\rVert}
+
+%\newcommand{\xNewNorm}[2]{\xNorm{#1}{#2}}
+\newcommand{\xNewNormSpace}[2]{ {{\lVert} #1 {\rVert}}_{#2}}
+
+\newcommand{\xNewSum}{\sum} %{ \Sigma  }
+
+
+\newcommand{\xWindMesh}{{W}ind{M}esh}
+
+

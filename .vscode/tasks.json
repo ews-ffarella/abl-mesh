@@ -1,0 +1,129 @@
+{
+    "tasks": [
+        {
+            "args": [
+                "pre-commit",
+                "run",
+                "--all-files"
+            ],
+            "command": "uvx",
+            "label": "Lint (pre-commit)",
+            "presentation": {
+                "reveal": "silent",
+                "revealProblems": "onProblem"
+            },
+            "type": "process"
+        },
+        {
+            "args": [
+                "pre-commit",
+                "autoupdate"
+            ],
+            "command": "uvx",
+            "label": "Update (pre-commit)",
+            "presentation": {
+                "reveal": "always",
+                "revealProblems": "onProblem"
+            },
+            "type": "process"
+        },
+        {
+            "args": [
+                "tool",
+                "install",
+                "pre-commit"
+            ],
+            "command": "uv",
+            "label": "Install pre-commit (via uv)",
+            "presentation": {
+                "reveal": "always",
+                "revealProblems": "onProblem"
+            },
+            "type": "process"
+        },
+        {
+            "args": [
+                "tool",
+                "install",
+                "nbstripout-fast"
+            ],
+            "command": "uv",
+            "label": "Install nbstripout-fast (via uv)",
+            "presentation": {
+                "reveal": "always",
+                "revealProblems": "onProblem"
+            },
+            "type": "process"
+        },
+        {
+            "args": [
+                "config",
+                "--list",
+                "--local"
+            ],
+            "command": "git",
+            "label": "Show git config",
+            "presentation": {
+                "reveal": "always"
+            },
+            "type": "process"
+        },
+        {
+            "args": [
+                "--quiet",
+                "codespell@latest",
+                "--interactive",
+                "1",
+                "-w",
+                "$(git ls-files)"
+            ],
+            "command": "uvx",
+            "label": "Run codespell in interactive mode (Y)",
+            "presentation": {
+                "reveal": "always"
+            },
+            "type": "process"
+        },
+        {
+            "args": [
+                "run",
+                "--quiet",
+                "scripts/show_running_vscode_kernels.py"
+            ],
+            "command": "uvx",
+            "label": "Show running VS Code servers",
+            "presentation": {
+                "reveal": "always"
+            },
+            "type": "process"
+        },
+        {
+            "args": [
+                "ruff",
+                "check",
+                "--fix",
+                "--show-fixes",
+                "--unsafe-fixes",
+            ],
+            "command": "uvx",
+            "label": "Run ruff check",
+            "presentation": {
+                "reveal": "always"
+            },
+            "type": "process"
+        },
+        {
+            "args": [
+                "ruff",
+                "format",
+            ],
+            "command": "uvx",
+            "label": "Run ruff format",
+            "presentation": {
+                "reveal": "always"
+            },
+            "type": "process"
+        }
+    ],
+    "version": "2.0.0"
+}

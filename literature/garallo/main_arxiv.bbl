@@ -1,0 +1,263 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{kopp1984remote}
+F.~K{\"o}pp, R.~Schwiesow, C.~Werner, Remote measurements of boundary-layer
+  wind profiles using a cw doppler lidar, Journal of climate and applied
+  meteorology 23~(1) (1984) 148--154.
+
+\bibitem{garratt1994atmospheric}
+J.~R. Garratt, The atmospheric boundary layer, Earth-Science Reviews 37~(1-2)
+  (1994) 89--134.
+
+\bibitem{blocken2007cfd}
+B.~Blocken, T.~Stathopoulos, J.~Carmeliet, Cfd simulation of the atmospheric
+  boundary layer: wall function problems, Atmospheric environment 41~(2) (2007)
+  238--252.
+
+\bibitem{wizelius2007developing}
+T.~Wizelius, Developing wind power projects: theory and practice, Earthscan,
+  2007.
+
+\bibitem{stull2012introduction}
+R.~B. Stull, An introduction to boundary layer meteorology, Vol.~13, Springer
+  Science \& Business Media, 2012.
+
+\bibitem{sorensen:hypgrid}
+N.~N. S{\o}rensen, Hypgrid2d a 2-d mesh generator, Tech. rep., Denmark.
+  Forskningscenter Risoe. Risoe-R; No. 1035(EN) (1998).
+
+\bibitem{sorensen:ellypsys3Dvalidation}
+I.~Stefan, R.~Mikkelsen, N.~N. S{\o}rensen, D.~Henningson, Validation of
+  methods using ellipsys3d, Tech. rep., Engelska (2008).
+
+\bibitem{openfoam:web}
+H.~Weller, {OpenFOAM}, https://openfoam.org/ (2018).
+
+\bibitem{gargallo:meshForABLandWindFarms}
+A.~Gargallo-Peir\'o, M.~Avila, H.~Owen, L.~Prieto, A.~Folch, Mesh generation
+  for atmospheric boundary layer simulation in wind farm design and management,
+  Procedia Engineering 124 (2015) 239--251.
+
+\bibitem{gargallo2018JCP:WindFarms}
+A.~Gargallo-Peir{\'o}, M.~Avila, H.~Owen, L.~Prieto-Godino, A.~Folch, Mesh
+  generation, sizing and convergence for onshore and offshore wind farm
+  atmospheric boundary layer flow simulation with actuator discs, Journal of
+  Computational Physics 375 (2018) 209--227.
+
+\bibitem{zephy}
+T.~F. B.~Bichet, P.~Alexandre, Comparison of two cfd tools against measurements
+  on complex terrain, in: 1st Symposium OpenFOAM dedicated to Wind Energy,
+  2013, pp. 1--19.
+
+\bibitem{haltiner:numericalMeteorology}
+G.~J. Haltiner, R.~T. Williams, Numerical prediction and dynamic meteorology,
+  Wiley, 1980.
+
+\bibitem{arakawa:vertical}
+A.~Arakawa, C.~S. Konor, Vertical differencing of the primitive equations based
+  on the charney-phillips grid in hybrid $\sigma$-p vertical coordinates,
+  Month. Weather Rev. 124~(3) (1996) 511--528.
+
+\bibitem{michelsen:1994block}
+J.~A. Michelsen, Block structured Multigrid solution of 2D and 3D elliptic
+  PDE's, Department of Fluid Mechanics, Technical University of Denmark, 1994.
+
+\bibitem{marras:atmosphericStabilization}
+S.~Marras, Variational multiscale stabilization of finite and spectral elements
+  for dry and moist atmospheric problems, Ph.D. thesis, Universitat
+  Polit\`ecnica de Catalunya (2012).
+
+\bibitem{montero19983}
+G.~Montero, R.~Montenegro, J.~Escobar, A 3-d diagnostic model for wind field
+  adjustment, Journal of Wind Engineering and Industrial Aerodynamics 74 (1998)
+  249--261.
+
+\bibitem{montero2005genetic}
+G.~Montero, E.~Rodr{\i}guez, R.~Montenegro, J.~M. Escobar, J.~M.
+  Gonz{\'a}lez-Yuste, Genetic algorithms for an improved parameter estimation
+  with local refinement of tetrahedral meshes in a wind model, Advances in
+  Engineering Software 36~(1) (2005) 3--10.
+
+\bibitem{escobar:smoothingSrfParam}
+J.~M. Escobar, G.~Montero, R.~Montenegro, E.~Rodr\'iguez, An algebraic method
+  for smoothing surface triangulations on a local parametric space, Int. J.
+  Numer. Meth. Eng. 66~(4) (2006) 740--760.
+
+\bibitem{escobar:tetMeshTerrains}
+R.~Montenegro, G.~Montero, J.~M. Escobar, E.~Rodr\'iguez, J.~M.
+  Gonz\'alez-Yuste, Tetrahedral mesh generation for environmental problems over
+  complex terrains, in: P.~Sloot, A.~Hoekstra, C.~Tan, J.~Dongarra (Eds.),
+  Computational Science — ICCS 2002, Vol. 2329 of Lecture Notes in Computer
+  Science, Springer Berlin Heidelberg, 2002, pp. 335--344.
+
+\bibitem{behrens:amatos}
+J.~Behrens, N.~Rakowsky, W.~Hiller, D.~Handorf, M.~L{\"a}uter, J.~P{\"a}pke,
+  K.~Dethloff, amatos: Parallel adaptive mesh generator for atmospheric and
+  oceanic simulation, Ocean modelling 10~(1-2) (2005) 171--183.
+
+\bibitem{oliver:windMeccano}
+A.~Oliver, E.~Rodr\'iguez, J.~Escobar, G.~Montero, M.~Hortal, J.~Calvo,
+  J.~Casc\'on, R.~Montenegro, Wind forecasting based on the harmonie model and
+  adaptive finite elements, Pure and Applied Geophysics 172~(1) (2015)
+  109--120.
+
+\bibitem{gargallo:representingUrbanGeometries}
+A.~Gargallo-Peir\'o, A.~Folch, X.~Roca, Representing urban geometries for
+  unstructured mesh generation, Procedia Engineering 163 (2016) 175--185, 25th
+  International Meshing Roundtable.
+
+\bibitem{avila:CFDframworkWindFarms}
+M.~Avila, A.~Gargallo-Peir{\'o}, A.~Folch, A cfd framework for offshore and
+  onshore wind farm simulation, Journal of Physics: Conference Series 854~(1)
+  (2017) 012002.
+
+\bibitem{Diaz2018}
+G.~P.~N. Diaz, M.~Avila, A.~Folch, {An annual energy production estimation
+  methodology for onshore wind farms over complex terrain using a RANS model
+  with actuator discs}, Journal of Physics: Conference Series 1037.
+
+\bibitem{Apsley}
+D.~Apsley, I.~Castro, A limited-length-scale k-$\epsilon$ model for the neutral
+  and stably-stratified atmospheric boundary layer stationary incompressible
+  flows, Boundary-Layer Meteorology 83 (1997) 75--98.
+
+\bibitem{Panofsky}
+H.~A. Panofsky, J.~Dutton, Atmospheric turbulence, models and methods for
+  engineering applications, Wiley, 1984.
+
+\bibitem{monin1954basic}
+A.~S. Monin, A.~M. Obukhov, Basic laws of turbulent mixing in the surface layer
+  of the atmosphere, Contrib. Geophys. Inst. Acad. Sci. USSR 151~(163) (1954)
+  e187.
+
+\bibitem{houzeaux:alyaFractional}
+G.~Houzeaux, M.~V\'azquez, R.~Aubry, J.~Cela, A massively parallel fractional
+  step solver for incompressible flows, J. Comput. Phys. 228~(17) (2009) 6316
+  -- 6332.
+
+\bibitem{vazquez:alyaExascale}
+M.~V{\'{a}}zquez, G.~Houzeaux, S.~Koric, A.~Artigues, J.~Aguado-Sierra,
+  R.~Ar{\'{i}}s, D.~Mira, H.~Calmet, F.~Cucchietti, H.~Owen, A.~Taha,
+  E.~Burness, J.~Cela, M.~Valero, {Alya: Multiphysics engineering simulation
+  toward exascale}, Journal of Computational Science 14 (2016) 15--27.
+
+\bibitem{gargallo2017subdividing}
+A.~Gargallo-Peir{\'o}, G.~Houzeaux, X.~Roca, Subdividing triangular and
+  quadrilateral meshes in parallel to approximate curved geometries, Procedia
+  Engineering 203 (2017) 310--322.
+
+\bibitem{frey2000surface}
+P.~J. Frey, About surface remeshing, Proc. 9th Int. Meshing Roundtable.
+
+\bibitem{frey2003surface}
+P.~Frey, H.~Borouchaki, Surface meshing using a geometric error estimate,
+  International journal for numerical methods in engineering 58~(2) (2003)
+  227--245.
+
+\bibitem{Frey2008Book}
+P.~Frey, P.~George, Mesh Generation: Application to Finite Elements, Wiley,
+  2008.
+
+\bibitem{gargallo20:topoAdapted}
+A.~Gargallo-Peir{\'o}, M.~Avila, A.~Folch, {Topography Adapted Mesh Generation
+  for Atmospheric Boundary Layer Flow Simulation}, in: Proceedings of the 28th
+  International Meshing Roundtable, Zenodo, 2020, pp. 1--18.
+
+\bibitem{peraire:87}
+J.~Peraire, M.~Vahdati, K.~Morgan, O.~C. Zienkiewicz, Adaptive remeshing for
+  compressible flow computations, J. Comput. Phys. 72~(2) (1987) 449---466.
+
+\bibitem{frey2005anisotropic}
+P.-J. Frey, F.~Alauzet, Anisotropic mesh adaptation for cfd computations,
+  Computer methods in applied mechanics and engineering 194~(48-49) (2005)
+  5068--5082.
+
+\bibitem{loseille2009optimal}
+A.~Loseille, F.~Alauzet, Optimal 3d highly anisotropic mesh adaptation based on
+  the continuous mesh framework, in: Proc. 18th Int. Meshing Roundtable,
+  Springer, 2009, pp. 575--594.
+
+\bibitem{loseille2011continuous1}
+A.~Loseille, F.~Alauzet, Continuous mesh framework part i: well-posed
+  continuous interpolation error, SIAM Journal on Numerical Analysis 49~(1)
+  (2011) 38--60.
+
+\bibitem{loseille2011continuous2}
+A.~Loseille, F.~Alauzet, Continuous mesh framework part ii: validations and
+  applications, SIAM Journal on Numerical Analysis 49~(1) (2011) 61--86.
+
+\bibitem{shewchuk1996triangle}
+J.~R. Shewchuk, Triangle: Engineering a 2d quality mesh generator and delaunay
+  triangulator, in: Applied computational geometry towards geometric
+  engineering, Springer, 1996, pp. 203--222.
+
+\bibitem{roca:PhDDissertation}
+X.~Roca, Paving the path towards automatic hexahedral mesh generation, Ph.D.
+  thesis, Universitat Polit\`ecnica de Catalunya (2009).
+
+\bibitem{roca2010automatic}
+X.~Roca, J.~Sarrate, An automatic and general least-squares projection
+  procedure for sweep meshing, Eng. Comput. 26~(4) (2010) 391--406.
+
+\bibitem{si:tetgen}
+H.~Si, Tetgen, a delaunay-based quality tetrahedral mesh generator, ACM Trans.
+  Math. Softw. 41~(2) (2015) 11:1--11:36.
+
+\bibitem{gargallo:generation3Doptimization}
+A.~Gargallo-Peir\'o, X.~Roca, J.~Peraire, J.~Sarrate, Optimization of a
+  regularized distortion measure to generate curved high-order unstructured
+  tetrahedral meshes, Int. J. Numer. Meth. Eng. 103 (2015) 342--363.
+
+\bibitem{AGPXRNJPGJSR:IMR13ewc}
+A.~Gargallo-Peir\'o, X.~Roca, J.~Peraire, J.~Sarrate, Distortion and quality
+  measures for validating and generating high-order tetrahedral meshes, Eng.
+  Comput. 31 (2015) 423--437.
+\newblock \href {http://dx.doi.org/10.1007/s00366-014-0370-1}
+  {\path{doi:10.1007/s00366-014-0370-1}}.
+
+\bibitem{knupp:algebraicQualityInitialMeshes}
+P.~M. Knupp, Algebraic mesh quality metrics for unstructured initial meshes,
+  Finite Elem. Anal. Des. 39~(3) (2003) 217--241.
+
+\bibitem{gargallo2013ADMOS}
+A.~Gargallo-Peir{\'o}, X.~Roca~Navarro, J.~Peraire, J.~Sarrate, High-order mesh
+  generation on cad geometries, in: Adaptive Modeling and Simulation 2013,
+  2013, pp. 301--312.
+
+\bibitem{gargallo:LinearSurfaces}
+A.~Gargallo-Peir\'o, X.~Roca, J.~Sarrate, A surface mesh smoothing and
+  untangling method independent of the {CAD} parameterization, Comput. Mech.
+  53~(4) (2014) 587--609.
+
+\bibitem{gargallo:highorderSurfaces}
+A.~Gargallo-Peir\'o, X.~Roca, J.~Peraire, J.~Sarrate, A distortion measure to
+  validate and generate curved high-order meshes on {CAD} surfaces with
+  independence of parameterization, Int. J. Numer. Meth. Eng. 106~(13) (2015)
+  1100--1130.
+
+\bibitem{babuska:angle}
+I.~Babu{\v{s}}ka, A.~Aziz, On the angle condition in the finite element
+  analysis, SIAM J. Numer. Anal. 13~(2) (1976) 214--226.
+
+\bibitem{shewchuk:goodElements}
+J.~Shewchuk, What is a good linear finite element? interpolation, conditioning,
+  anisotropy, and quality measures, Preprint.
+
+\bibitem{arnold2000locally}
+D.~Arnold, A.~Mukherjee, L.~Pouly, Locally adapted tetrahedral meshes using
+  bisection, SIAM Journal on Scientific Computing 22~(2) (2000) 431--448.
+
+\bibitem{MN4}
+{Barcelona Supercomputing Center}, {M}are{N}ostrum 4,
+  \texttt{https://www.bsc.es/marenostrum} (2018).
+
+\bibitem{IberdrolaRenovables}
+Energy Resource Dpt., Iberdrola renovables,
+  \texttt{http://www.iberdrolarenovablesenergia.com} (2001).
+
+\end{thebibliography}
