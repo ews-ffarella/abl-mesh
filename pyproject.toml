@@ -56,6 +56,7 @@ full = [
 [dependency-groups]
 dev = [
     "ipykernel>=6.30.1",
+    "pytest>=8.4.1",
 ]
 
 

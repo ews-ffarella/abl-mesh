@@ -8,14 +8,14 @@ Enhancements:
     --bg-adapt-anisotropic-oblique : enable oblique (metric-aligned) refinement
 - For debug: you can request the visualization overlay of refinement cells by using --visualize-debug
 """
+
 from __future__ import annotations
 
 import argparse
 import logging
+import math
 import os
 import sys
-import math
-from typing import Optional, List, Tuple
 
 try:
     import geopandas as gpd
@@ -24,44 +24,96 @@ except Exception:
 
 from shapely.geometry import Polygon
 
-from abl_mesh.raster_topography import RasterTopography, RasterHighOrderApproximant
-from abl_mesh.zone_tensor_mesher import ZoneTensorMesher
+from abl_mesh.raster_topography import RasterHighOrderApproximant, RasterTopography
 from abl_mesh.visualize import PVVisualizer
+from abl_mesh.zone_tensor_mesher import ZoneTensorMesher
 
 
 def parse_args():
-    p = argparse.ArgumentParser(description="Pipeline driver: raster -> HO -> metric -> Gmsh surface")
+    p = argparse.ArgumentParser(
+        description="Pipeline driver: raster -> HO -> metric -> Gmsh surface"
+    )
     p.add_argument("--raster", required=True, help="Path to input DEM raster (GeoTIFF).")
-    p.add_argument("--load-coeffs", default=None, help="Path to precomputed coefficients GeoTIFF to load before meshing.")
-    p.add_argument("--export-coeffs", default=None, help="If set together with --do-precompute, export coefficients to this GeoTIFF path after precompute.")
-    p.add_argument("--memmap-path", default=None, help="If set, precompute will write coefficients to this memmap file (out-of-core).")
-    p.add_argument("--tile-size", default="256,256", help="Tile size for memmap precompute as 'rows,cols' (default '256,256').")
-    p.add_argument("--hmin", type=float, required=True, help="Minimum size in center region (meters).")
+    p.add_argument(
+        "--load-coeffs",
+        default=None,
+        help="Path to precomputed coefficients GeoTIFF to load before meshing.",
+    )
+    p.add_argument(
+        "--export-coeffs",
+        default=None,
+        help="If set together with --do-precompute, export coefficients to this GeoTIFF path after precompute.",
+    )
+    p.add_argument(
+        "--memmap-path",
+        default=None,
+        help="If set, precompute will write coefficients to this memmap file (out-of-core).",
+    )
+    p.add_argument(
+        "--tile-size",
+        default="256,256",
+        help="Tile size for memmap precompute as 'rows,cols' (default '256,256').",
+    )
+    p.add_argument(
+        "--hmin", type=float, required=True, help="Minimum size in center region (meters)."
+    )
     p.add_argument("--hmax", type=float, required=True, help="Maximum size outside (meters).")
     p.add_argument("--bg-nx", type=int, default=400, help="Base background sampling nx.")
     p.add_argument("--bg-ny", type=int, default=400, help="Base background sampling ny.")
-    p.add_argument("--do-precompute", action="store_true", help="Precompute HO polynomial coefficients at raster cell centers.")
-    p.add_argument("--precompute-njobs", type=int, default=-1, help="n_jobs for precompute_all_coeffs")
+    p.add_argument(
+        "--do-precompute",
+        action="store_true",
+        help="Precompute HO polynomial coefficients at raster cell centers.",
+    )
+    p.add_argument(
+        "--precompute-njobs", type=int, default=-1, help="n_jobs for precompute_all_coeffs"
+    )
     p.add_argument("--precompute-use-tqdm", action="store_true", help="Show tqdm during precompute")
-    p.add_argument("--export-coeffs-nodata", type=float, default=-9999.0, help="nodata sentinel when exporting GeoTIFF coefficients.")
+    p.add_argument(
+        "--export-coeffs-nodata",
+        type=float,
+        default=-9999.0,
+        help="nodata sentinel when exporting GeoTIFF coefficients.",
+    )
     p.add_argument("--visualize", action="store_true", help="Show pyvista visualizations.")
-    p.add_argument("--visualize-debug", action="store_true", help="Show refinement debug overlay after background generation (if available).")
+    p.add_argument(
+        "--visualize-debug",
+        action="store_true",
+        help="Show refinement debug overlay after background generation (if available).",
+    )
     p.add_argument("--verbosity", type=int, default=1, help="Verbosity (0..2).")
 
     # New anisotropic options
-    p.add_argument("--bg-adapt-anisotropic", action="store_true",
-                   help="Enable anisotropic (metric-aligned) adaptive background sampling.")
-    p.add_argument("--bg-adapt-anisotropic-oblique", action="store_true",
-                   help="Enable oblique anisotropic splitting (metric-aligned cut lines).")
-    p.add_argument("--anisotropy-threshold", type=float, default=2.0,
-                   help="Anisotropy eigenvalue ratio threshold to trigger anisotropic refinement (default 2.0).")
-    p.add_argument("--bg-adapt-max-levels", type=int, default=0, help="Max adaptive subdivision levels for background (0 disables).")
+    p.add_argument(
+        "--bg-adapt-anisotropic",
+        action="store_true",
+        help="Enable anisotropic (metric-aligned) adaptive background sampling.",
+    )
+    p.add_argument(
+        "--bg-adapt-anisotropic-oblique",
+        action="store_true",
+        help="Enable oblique anisotropic splitting (metric-aligned cut lines).",
+    )
+    p.add_argument(
+        "--anisotropy-threshold",
+        type=float,
+        default=2.0,
+        help="Anisotropy eigenvalue ratio threshold to trigger anisotropic refinement (default 2.0).",
+    )
+    p.add_argument(
+        "--bg-adapt-max-levels",
+        type=int,
+        default=0,
+        help="Max adaptive subdivision levels for background (0 disables).",
+    )
 
     return p.parse_args()
 
 
 def configure_logging(verbosity: int):
-    level = logging.WARNING if verbosity <= 0 else (logging.INFO if verbosity == 1 else logging.DEBUG)
+    level = (
+        logging.WARNING if verbosity <= 0 else (logging.INFO if verbosity == 1 else logging.DEBUG)
+    )
     logging.basicConfig(level=level, format="%(asctime)s [%(levelname)s] %(message)s")
 
 
@@ -87,11 +139,22 @@ def main():
     # Optionally run precompute (either in-memory or memmap tiled)
     if args.do_precompute and (ho._precomputed is None):
         tile_rows, tile_cols = (int(s) for s in args.tile_size.split(","))
-        logging.info("Starting HO precompute (memmap=%s, tiles=%dx%d)", args.memmap_path, tile_rows, tile_cols)
-        ho.precompute_all_coeffs(n_jobs=args.precompute_njobs, use_tqdm=args.precompute_use_tqdm,
-                                 memmap_path=(args.memmap_path if args.memmap_path else None),
-                                 tile_size=(tile_rows, tile_cols))
-        logging.info("Precompute finished. Valid coeffs: %d", int(ho._precompute_mask.sum()) if ho._precompute_mask is not None else 0)
+        logging.info(
+            "Starting HO precompute (memmap=%s, tiles=%dx%d)",
+            args.memmap_path,
+            tile_rows,
+            tile_cols,
+        )
+        ho.precompute_all_coeffs(
+            n_jobs=args.precompute_njobs,
+            use_tqdm=args.precompute_use_tqdm,
+            memmap_path=(args.memmap_path if args.memmap_path else None),
+            tile_size=(tile_rows, tile_cols),
+        )
+        logging.info(
+            "Precompute finished. Valid coeffs: %d",
+            int(ho._precompute_mask.sum()) if ho._precompute_mask is not None else 0,
+        )
 
         if args.export_coeffs:
             logging.info("Exporting coefficients to GeoTIFF: %s", args.export_coeffs)
@@ -117,12 +180,21 @@ def main():
     center = (0.5 * (xmin + xmax), 0.5 * (ymin + ymax))
     outer_radius = 0.5 * math.hypot(xmax - xmin, ymax - ymin)
 
-    mesher = ZoneTensorMesher(ho, metric_sampler, bbox=raster.bounds(), verbosity=args.verbosity, gmsh_init=True)
+    mesher = ZoneTensorMesher(
+        ho, metric_sampler, bbox=raster.bounds(), verbosity=args.verbosity, gmsh_init=True
+    )
 
     nodes3d, tri_idx = mesher.generate(
         nx=args.bg_nx,
         ny=args.bg_ny,
-        inner_poly=Polygon([(center[0]-10, center[1]-10),(center[0]+10, center[1]-10),(center[0]+10, center[1]+10),(center[0]-10, center[1]+10)]),
+        inner_poly=Polygon(
+            [
+                (center[0] - 10, center[1] - 10),
+                (center[0] + 10, center[1] - 10),
+                (center[0] + 10, center[1] + 10),
+                (center[0] - 10, center[1] + 10),
+            ]
+        ),
         center=center,
         outer_radius=outer_radius,
         transition_width=500.0,
@@ -141,7 +213,7 @@ def main():
         bg_adapt_max_levels=args.bg_adapt_max_levels,
         refinement_polygons=None,
         bg_adapt_anisotropic=args.bg_adapt_anisotropic,
-        anisotropy_ratio_threshold=args.anisotropy_threshold
+        anisotropy_ratio_threshold=args.anisotropy_threshold,
     )
 
     logging.info("Generated final mesh nodes=%d tris=%d", nodes3d.shape[0], tri_idx.shape[0])

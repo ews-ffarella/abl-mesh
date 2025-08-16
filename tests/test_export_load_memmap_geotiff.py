@@ -9,13 +9,14 @@ This test exercises:
 
 Uses a tiny synthetic raster created in the test to remain fast.
 """
-import os
-import numpy as np
-import tempfile
-from rasterio.transform import Affine
-import rasterio
 
-from abl_mesh.raster_topography import RasterTopography, RasterHighOrderApproximant
+import os
+
+import numpy as np
+import rasterio
+from rasterio.transform import Affine
+
+from abl_mesh.raster_topography import RasterHighOrderApproximant, RasterTopography
 
 
 def _create_test_raster(path, nx=6, ny=5):
@@ -34,7 +35,7 @@ def _create_test_raster(path, nx=6, ny=5):
         "count": 1,
         "dtype": "float32",
         "crs": None,
-        "transform": transform
+        "transform": transform,
     }
     with rasterio.open(path, "w", **profile) as dst:
         dst.write(data, 1)
@@ -50,7 +51,9 @@ def test_memmap_precompute_export_import(tmp_path):
 
     memmap_file = str(tmp_path / "coeffs.memmap")
     # Run tiled precompute with small tile size to exercise tile logic
-    ho.precompute_all_coeffs(n_jobs=1, use_tqdm=False, memmap_path=memmap_file, memmap_dtype="float32", tile_size=(2,3))
+    ho.precompute_all_coeffs(
+        n_jobs=1, use_tqdm=False, memmap_path=memmap_file, memmap_dtype="float32", tile_size=(2, 3)
+    )
     assert ho._precomputed is not None
     assert ho._precompute_mask is not None
     assert ho._precompute_mask.sum() >= 1
