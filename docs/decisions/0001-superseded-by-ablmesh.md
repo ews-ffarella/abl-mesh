@@ -55,9 +55,11 @@ alone; it is lost the day the archive is deleted or stops being cloned.
   bilinearly; the out-of-core coefficient store has no successor.
 - **The gmsh background-mesh route** (`zone_tensor_mesher.py`, and the two
   earlier meshers under `unused/`): writing a `.msh` with per-node 2x2
-  metric components and calling `gmsh.model.mesh.setBackgroundMesh`. It is
-  the one working record of that API in the estate; `ablmesh` uses gmsh
-  only for quad recombination.
+  metric components and calling `gmsh.model.mesh.setBackgroundMesh`. That
+  call does not exist in gmsh 4.14.0 (its only background API is the
+  scalar `field.setAsBackgroundMesh`), so the route never ran end to end;
+  what stands is the sampler and metric-writing code in front of it.
+  `ablmesh` uses gmsh only for quad recombination.
 - **The Copilot brief** (`.github/instructions/Paper.instructions.md`) and
   the session write-up (`PROJECT_OVERVIEW.md`): the record of how the
   prototype was asked for and what it thought it had built.

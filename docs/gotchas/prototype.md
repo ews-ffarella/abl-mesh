@@ -24,7 +24,22 @@ with `gmsh_init=False`; the import guard fires before the flag is read. Both
 `test_anisotropic_sampler.py` tests die there under a bare `uv sync`.
 
 **Instead:** `uv sync --extra gmsh`. On a headless container the wheel then
-needs `libGLU.so.1` (`apt-get install libglu1-mesa`) before it imports.
+needs `apt-get install libglu1-mesa libxft2` before it imports — and the
+constructor still refuses, see the next entry.
+
+### `gmsh.model.mesh.setBackgroundMesh(path)` on gmsh 4.14
+
+The call every mesher here is built around does not exist. gmsh 4.14.0's
+Python API has one background-mesh entry point,
+`gmsh.model.mesh.field.setAsBackgroundMesh(tag)`, which takes a scalar
+size *field*, not a `.msh` with tensor point data. `ZoneTensorMesher`,
+`unused/gmsh_background_metric_mesher.py` and `unused/gmsh_zone_mesher.py`
+all `hasattr`-check for it and raise, so the scalar fallback further down
+is unreachable and the route never ran end to end.
+
+**Instead:** the tensor metric goes to MMG2D as a Medit `.sol`, which is
+what `ablmesh` does (`preprocessing/mmg_utils.py`). In gmsh, a scalar size
+field via a `PostView` field is the only sanctioned route.
 
 ### `ho.load_coeffs_memmap(...)`
 

@@ -35,8 +35,9 @@ src/abl_mesh/
   zone_tensor_mesher.py  ZoneTensorMesher: samples a metric field on a
                          background grid (structured, gradient-adaptive,
                          axis-aligned or oblique anisotropic), writes a .msh
-                         with per-node 2x2 metric, hands it to gmsh >= 4.14
-                         setBackgroundMesh, lifts the 2D mesh with the HO fit
+                         with per-node 2x2 metric, meant for a
+                         gmsh.model.mesh.setBackgroundMesh that gmsh 4.14.0
+                         does not have; lifts the 2D mesh with the HO fit
   delaunay_backends.py   scipy / triangle / meshpy / startinpy adapter
   visualize.py           PVVisualizer (pyvista)
   topography.py          the paper's triangle-based HO approximant (earlier
@@ -63,7 +64,7 @@ docs/                    the map, one proposed decision, gotchas, lab book
 
 ```bash
 uv sync                      # core deps; gmsh is an extra
-uv sync --extra gmsh         # adds the gmsh wheel (needs libGLU.so.1 on the host)
+uv sync --extra gmsh         # gmsh wheel; needs libglu1-mesa + libxft2 on a headless host
 uv run pytest -q             # 4 failed, 2 passed on the 2025-08-16 tree
 ruff check .                 # 183 findings on that tree; not a gate
 ruff format --check .        # clean

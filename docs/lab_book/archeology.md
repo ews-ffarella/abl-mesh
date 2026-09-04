@@ -139,3 +139,17 @@ repo on the Linux host). `ablmesh`'s C++ directory is named
 
 Extracted the same day: the dead ends to `docs/gotchas/prototype.md`, the
 supersession to `docs/decisions/0001-superseded-by-ablmesh.md`.
+
+## 2026-09-04 — the gmsh route on a real gmsh 4.14.0
+
+After the dpkg lock freed (04:26 UTC), `apt-get install libglu1-mesa
+libxft2` made the gmsh 4.14.0 wheel import. `uv run pytest -q` stays at
+**4 failed, 2 passed**: the two sampler tests now die one line later with
+`RuntimeError: This implementation requires gmsh >= 4.14 with
+setBackgroundMesh support`, because `hasattr(gmsh.model.mesh,
+"setBackgroundMesh")` is `False`. `grep -i background` over the wheel's
+`gmsh.py` finds only `gmsh.model.mesh.field.setAsBackgroundMesh(tag)`, the
+scalar size-field call. The mesher, both earlier meshers under `unused/`
+and the overview all target an API that gmsh 4.14.0 does not ship; the
+overview's *"available and tested for Gmsh 4.14"* was not measured on this
+wheel. Lifted to `docs/gotchas/prototype.md`.
