@@ -1,0 +1,43 @@
+---
+description: abl-mesh hard boundaries - this repo is the 2025-08 gmsh prototype kept as reference for ablmesh; do not evolve the pipeline here, keep literature/ and unused/ intact, and where history goes
+globs:
+alwaysApply: true
+---
+
+# abl-mesh — the boundary
+
+This repo is **reference material for `ablmesh`**, not a build target. It is
+the 2025-08 pure-Python, gmsh-based prototype of the terrain-meshing pipeline
+that `ablmesh` (MMG2D + CGAL + Ceres, C++/pybind11) went on to build. The
+work continued there; nothing continues here.
+
+## Hard boundaries
+
+1. **Do not evolve the pipeline here.** A feature, a fix to a sampler, a new
+   metric, a faster fit: it belongs in `ablmesh`. The only edits this repo
+   takes are documentation, agent config, and what Fabien asks for by name.
+   `docs/decisions/0001-superseded-by-ablmesh.md` is the record.
+2. **Keep `literature/` intact.** `literature/garallo/` holds the
+   Gargallo-Peiró, Avila and Folch paper the whole chain implements, with
+   its 33 figures, `references.bib` and `.bbl`. `ablmesh` carries the text
+   (`docs/reference/gargallo.tex`) but not the figures or the bibliography;
+   this is the only checkout that has them.
+3. **Never delete `src/abl_mesh/unused/` or `PROJECT_OVERVIEW.md`.** They
+   are the record of what the prototype tried: the prism extruder, the
+   hybrid orchestrator, the Gauss-Seidel optimizer, the two earlier gmsh
+   meshers, and the session write-up that names what was implemented against
+   the paper. If something must move, `git mv` it into `_old/`.
+4. **The failing tests are findings, not a to-do list.** They are recorded
+   in `docs/gotchas/prototype.md` with their cause. Do not mass-edit source
+   to turn the suite green or to silence `ruff check` (183 findings on the
+   2025-08-16 tree); a targeted fix is Fabien's call.
+5. **`.claude/` is generated.** Author under `.cursor/`, then
+   `uv run python scripts/sync_agent_config.py` (rule `agent-config-sync`).
+
+## Where history goes
+
+Docs describe what IS. `docs/lab_book/archeology.md` holds the dated read of
+this repo against `ablmesh`; `docs/gotchas/prototype.md` holds the dead ends
+in short form; `docs/decisions/` holds the one proposal. Nothing links into
+the lab book. A sentence that would need editing after a commit that does
+not touch its file does not belong in a doc; it goes to git.
